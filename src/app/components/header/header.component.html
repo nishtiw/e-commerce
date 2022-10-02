@@ -1,0 +1,24 @@
+<header>
+    <div class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="navbar-brand align-item-center d-flex">
+            <a routerLink="products" class="flipkart-icon">
+                <i class="flipkart-icon">
+                    <strong>
+                        <i class="fas fa-shipping-fast"></i>
+                        Flipkart
+                    </strong>
+                </i>
+            </a>
+            <div class="form-group">
+                <input type="text" placeholder="search products" class="form-control">
+            </div>
+            <span class="fas fa-search search-icon"></span>
+        </div>
+        <div>
+            <button routerLink="cart" class="btn btn-primary">
+                <i class="fas fa-cart-plus cart-icon"></i>
+                <div class="badge bg-danger">{{totalItems}}</div>
+            </button>
+        </div>
+    </div>
+</header>
