@@ -13,6 +13,7 @@ export class CartService {
 
   //upon calling this method getProducts(), data will be emitted from productList as it is now an observable
   getProducts() {
+    // this.getInfoFromLocalStorage();
     return this.productList.asObservable(); 
   }
 
@@ -33,11 +34,11 @@ export class CartService {
         if(item.id == product.id) {
           var qty = product.quantity;
           console.log("qty",qty);
-          var newQty = qty + 1;
+          var newQty = qty + 1; //increment quantity
           product.quantity = newQty;
           var total = product.total;
           console.log("total", total);
-          var newTotal = newQty * total;
+          var newTotal = newQty * total; //calculate new price
           product.total = newTotal;
         }
       });
@@ -79,6 +80,13 @@ export class CartService {
 
   removeInfoFromLocalStorage() {
     localStorage.removeItem("cartItems");
+  }
+
+  getInfoFromLocalStorage() {
+    this.cartItemList = JSON.parse(localStorage.getItem("cartItems")!);
+    console.log(this.cartItemList);
+    this.productList.next(this.cartItemList);
+    return this.productList.asObservable();
   }
 
 }
