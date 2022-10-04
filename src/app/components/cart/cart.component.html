@@ -22,7 +22,17 @@
                                 <img class="product-img" src="{{item.image}}" alt="">
                             </td>
                             <td>{{item.price}}</td>
-                            <td>{{item.quantity}}</td>
+                            <td>
+                                <div>
+                                    <button type="button" (click)="decrementCartItem(item); getTotalPrice()" class="btn btn-outline-danger"  data-type="minus" data-field="">
+                                        <i class="bi bi-dash"></i>
+                                      </button>
+                                    {{item.quantity}}
+                                    <button type="button" (click)="addToCart(item); getTotalPrice()" class="btn btn-outline-success" data-type="plus" data-field="">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                </div>
+                            </td>
                             <td>{{item.total}}</td>
                             <td>
                                 <button (click)="removeItem(item); getTotalPrice()" class="btn btn-danger">

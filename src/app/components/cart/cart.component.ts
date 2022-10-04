@@ -19,9 +19,10 @@ export class CartComponent implements OnInit {
   public grandTotal : number = 0;
 
   getProducts() {
-    this.cartService.getProducts().subscribe(data => {
-      this.products = data;
-    })
+    // this.cartService.getProducts().subscribe(data => {
+      // this.products = data;
+    // })
+    this.products = this.cartService.cartItemList;
   }
 
   getTotalPrice() {
@@ -34,6 +35,14 @@ export class CartComponent implements OnInit {
 
   emptyCart() {
     this.cartService.removeAllFromCart();
+  }
+
+  addToCart(item: any) {
+    this.cartService.addToCart(item)
+  }
+
+  decrementCartItem(item : any) {
+    this.cartService.decrementCartItem(item);
   }
 
 }

@@ -31,14 +31,15 @@ export class CartService {
     } 
     else {
       this.cartItemList.forEach((item : any) => {
+        debugger;
         if(item.id == product.id) {
           var qty = product.quantity;
           console.log("qty",qty);
           var newQty = qty + 1; //increment quantity
           product.quantity = newQty;
-          var total = product.total;
-          console.log("total", total);
-          var newTotal = newQty * total; //calculate new price
+          var price = product.price;
+          console.log("total", price);
+          var newTotal = newQty * price; //calculate new price
           product.total = newTotal;
         }
       });
@@ -48,6 +49,22 @@ export class CartService {
     this.getTotalPrice();
     this.saveInfoToLocalStorage();
     console.log(this.cartItemList);
+  }
+
+  decrementCartItem(product : any) {
+    this.cartItemList.forEach((item : any) => {
+      if(item.id == product.id) {
+        var qty = product.quantity;
+        console.log("qty",qty);
+        var newQty = qty - 1; //increment quantity
+        qty > 1 ? newQty = qty - 1 : newQty = qty;
+        product.quantity = newQty;
+        var price = product.price;
+        console.log("total", price);
+        var newTotal = newQty * price; //calculate new price
+        product.total = newTotal;
+      }
+    });
   }
 
   getTotalPrice() : number {
